@@ -1,0 +1,18 @@
+.active {
+    font-weight: bold;
+    background-color: #f4ff94;
+}
+
+.list {
+    display: flex;
+    max-width: 600px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list button {
+    margin: 2px;
+    width: 7rem;
+    min-height: 2.5rem;
+    font-variant-caps: small-caps;
+}

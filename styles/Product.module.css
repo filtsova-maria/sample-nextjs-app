@@ -1,0 +1,58 @@
+.title p {
+    font-size: smaller;
+}
+
+.title h4 {
+    margin: 0;
+}
+
+.card {
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.card img {
+    border-radius: 10px;
+}
+
+.card ul {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-row-gap: 2px;
+}
+
+.card li {
+    display: grid;
+    grid-template-columns: 6rem auto;
+    grid-auto-flow: column;
+}
+
+.input-field {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.input-field span {
+    flex-basis: 0.5rem;
+    margin-left: 2px;
+}
+
+.input-field input:disabled {
+    color: black;
+    border: 0;
+}
+
+.tag {
+    font-weight: bold;
+}
+
+.list {
+    display: grid;
+    margin: 1em;
+    row-gap: 1em;
+}
