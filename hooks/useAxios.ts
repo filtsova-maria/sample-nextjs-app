@@ -20,7 +20,6 @@ const useAxios = <TResponse>(url: string, method: "get" | "post" | "put", reques
     const cacheConfig: CacheRequestConfig = { id: requestId, cache: { ttl: 1000 * 60 }, headers }
 
     const fetch = (requestBody: Body) => {
-        console.log(requestBody);
         axiosInstance[method](url, requestBody)
             .then(res => {
                 setRes(res.data);

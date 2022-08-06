@@ -14,7 +14,6 @@ interface IProductInfoItem {
 
 const ProductInfoItem: React.FC<IProductInfoItem> = ({ inputKey, label, value, editable, suffix, productInfoFormInput, setProductInfoFormInput }) => {
     const [inputValue, setInputValue] = useState(value);
-    console.log(productInfoFormInput)
     return (
         <li>
             <label className={productStyles.tag}>{label}</label>
