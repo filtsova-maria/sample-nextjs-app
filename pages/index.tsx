@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
-import CategoryList from '../components/CategoryList'
-import ProductList from '../components/ProductList'
-import { ECategory } from '../components/types'
+import CategoryList from '../components/Categories/CategoryList'
+import { ECategory } from '../components/Categories/types'
+import ProductList from '../components/Product/ProductList'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {

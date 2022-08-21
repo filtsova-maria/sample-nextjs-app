@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Product, ProductInfo } from './types'
 import productStyles from '../styles/Product.module.css';
-import ProductInfoList from './ProductInfoList';
+import ProductInfoList from '../ProductInfo/ProductInfoList';
 import omit from 'lodash/omit';
-import useAxios from '../hooks/useAxios';
+import useAxios from '../../hooks/useAxios';
+import { Product } from './types';
+import { ProductInfo } from '../ProductInfo/types';
 
 const ProductItem: React.FC<Product> = (product) => {
   const [editable, setEditable] = useState(false);

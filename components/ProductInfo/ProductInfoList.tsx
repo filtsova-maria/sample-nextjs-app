@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductInfoItem from './ProductInfoItem';
-import { EProductInfoLabels, ProductInfo } from './types';
+import { ProductInfo } from './types';
+import { EProductInfoLabels } from './types';
 
 type IProductInfoList = {
     productInfo: ProductInfo,

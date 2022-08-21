@@ -1,0 +1,22 @@
+export enum ECategory {
+    "smartphones" = "Smartphones",
+    "laptops" = "Laptops",
+    "fragrances" = "Fragrances",
+    "skincare" = "Skincare",
+    "groceries" = "Groceries",
+    "home-decoration" = "Home Decoration",
+    "furniture" = "Furniture",
+    "tops" = "Tops",
+    "womens-dresses" = "Women's Dresses",
+    "womens-shoes" = "Women's Shoes",
+    "mens-shirts" = "Men's Shirts",
+    "mens-shoes" = "Men's Shoes",
+    "mens-watches" = "Men's Watches",
+    "womens-watches" = "Women's Watches",
+    "womens-bags" = "Women's Bags",
+    "womens-jewellery" = "Women's Jewellery",
+    "sunglasses" = "Sunglasses",
+    "automotive" = "Automotive",
+    "motorcycle" = "Motorcycle",
+    "lighting" = "Lighting"
+  }

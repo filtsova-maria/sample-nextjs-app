@@ -1,8 +1,9 @@
 import React from 'react'
-import { ECategory, Product, ProductsResponse } from './types';
+import { ProductsResponse } from './types';
 import ProductItem from './ProductItem';
 import productStyles from '../styles/Product.module.css';
-import useAxios from '../hooks/useAxios';
+import useAxios from '../../hooks/useAxios';
+import { ECategory } from '../Categories/types';
 
 interface IProductList {
   activeCategory?: ECategory;

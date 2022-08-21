@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useAxios from "../hooks/useAxios";
+import useAxios from "../../hooks/useAxios";
 import categoryStyles from "../styles/Category.module.css";
 import { ECategory } from "./types";
 
