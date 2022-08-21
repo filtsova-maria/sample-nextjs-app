@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import productStyles from '../styles/Product.module.css';
+import productStyles from '../../styles/Product.module.css';
 import ProductInfoList from '../ProductInfo/ProductInfoList';
 import omit from 'lodash/omit';
 import useAxios from '../../hooks/useAxios';

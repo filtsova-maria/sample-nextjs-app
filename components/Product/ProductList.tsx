@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProductsResponse } from './types';
 import ProductItem from './ProductItem';
-import productStyles from '../styles/Product.module.css';
+import productStyles from '../../styles/Product.module.css';
 import useAxios from '../../hooks/useAxios';
 import { ECategory } from '../Categories/types';
 

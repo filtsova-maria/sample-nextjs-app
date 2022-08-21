@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import productStyles from '../styles/Product.module.css';
+import productStyles from '../../styles/Product.module.css';
 import { ProductInfo } from './types';
 
 interface IProductInfoItem {
