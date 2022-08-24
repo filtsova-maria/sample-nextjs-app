@@ -1,33 +1,37 @@
-import React from 'react'
-import { ProductsResponse } from './types';
-import ProductItem from './ProductItem';
-import productStyles from '../../styles/Product.module.css';
-import useAxios from '../../hooks/useAxios';
-import { ECategory } from '../Categories/types';
+import React from "react";
+import { ProductsResponse } from "./types";
+import ProductItem from "./ProductItem";
+import productStyles from "../../styles/Product.module.css";
+import useAxios from "../../hooks/useAxios";
+import useProductStore from "../../hooks/store";
 
-interface IProductList {
-  activeCategory?: ECategory;
-}
+const ProductList: React.FC = () => {
+  const activeCategory = useProductStore((state) => state.productCategory);
+  const { res, err, loading } = useAxios<ProductsResponse>(
+    `/products/category/${activeCategory}`,
+    "get",
+    "get-products"
+  );
 
-const ProductList: React.FC<IProductList> = ({ activeCategory }) => {
-  const { res, err, loading } = useAxios<ProductsResponse>(`/products/category/${activeCategory}`, "get", "get-products");
   if (loading) {
-    return <div>Loading products...</div>
+    return <div>Loading products...</div>;
   }
   if (err.length > 0) {
-    return (<div>Could not load products</div>)
+    return <div>Could not load products</div>;
   }
   if (!res) {
-    return <></>
+    return <></>;
   }
   if (!activeCategory) {
-    return <div>Pick a product category</div>
+    return <div>Pick a product category</div>;
   }
   return (
     <div className={productStyles.list}>
-      {res.products.map(product => <ProductItem {...product} key={product.id} />)}
+      {res.products.map((product) => (
+        <ProductItem {...product} key={product.id} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
 export default ProductList;

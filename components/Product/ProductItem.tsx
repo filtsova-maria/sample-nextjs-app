@@ -1,23 +1,38 @@
-import React, { useState } from 'react'
-import productStyles from '../../styles/Product.module.css';
-import ProductInfoList from '../ProductInfo/ProductInfoList';
-import omit from 'lodash/omit';
-import useAxios from '../../hooks/useAxios';
-import { Product } from './types';
-import { ProductInfo } from '../ProductInfo/types';
+import React, { useState } from "react";
+import productStyles from "../../styles/Product.module.css";
+import ProductInfoList from "../ProductInfo/ProductInfoList";
+import omit from "lodash/omit";
+import useAxios from "../../hooks/useAxios";
+import { Product } from "./types";
+import { ProductInfo } from "../ProductInfo/types";
+import Image from "next/image";
 
 const ProductItem: React.FC<Product> = (product) => {
   const [editable, setEditable] = useState(false);
-  const productInfo = omit(product, ["id", "title", "description", "thumbnail", "category", "images"]);
-  const [productInfoFormInput, setProductInfoFormInput] = useState<Partial<ProductInfo>>({});
-  const { fetch } = useAxios(`products/${product.id}`, "put", "product-edit", productInfo);
+  const productInfo = omit(product, [
+    "id",
+    "title",
+    "description",
+    "thumbnail",
+    "category",
+    "images",
+  ]);
+  const [productInfoFormInput, setProductInfoFormInput] = useState<
+    Partial<ProductInfo>
+  >({});
+  const { fetch } = useAxios(
+    `products/${product.id}`,
+    "put",
+    "product-edit",
+    productInfo
+  );
   return (
     <div key={product.id} className={productStyles.card}>
       <div className={productStyles.title}>
         <h4>{product.title}</h4>
         <p>{product.description}</p>
       </div>
-      <img src={product.thumbnail} />
+      <Image src={product.thumbnail} alt={product.title} />
       <ProductInfoList
         productInfo={productInfo}
         productInfoFormInput={productInfoFormInput}
@@ -25,18 +40,18 @@ const ProductItem: React.FC<Product> = (product) => {
         editable={editable}
       />
       <button
-        type='submit'
+        type="submit"
         onClick={() => {
           if (editable && Object.keys(productInfoFormInput).length > 0) {
-            fetch(productInfoFormInput)
+            fetch(productInfoFormInput);
           }
-          setEditable(!editable)
+          setEditable(!editable);
         }}
       >
         {editable ? "Done" : "Edit"}
       </button>
     </div>
-  )
-}
+  );
+};
 
 export default ProductItem;
