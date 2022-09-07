@@ -32,7 +32,7 @@ const ProductItem: React.FC<Product> = (product) => {
         <h4>{product.title}</h4>
         <p>{product.description}</p>
       </div>
-      <Image src={product.thumbnail} alt={product.title} />
+      <img src={product.thumbnail} alt={product.title}/>
       <ProductInfoList
         productInfo={productInfo}
         productInfoFormInput={productInfoFormInput}
