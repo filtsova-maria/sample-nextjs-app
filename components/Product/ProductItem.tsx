@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import productStyles from "../../styles/Product.module.css";
 import ProductInfoList from "../ProductInfo/ProductInfoList";
 import omit from "lodash/omit";
-import useAxios from "../../hooks/useAxios";
 import { Product } from "./types";
 import { ProductInfo } from "../ProductInfo/types";
-import Image from "next/image";
+import { axiosInstance } from "../../pages/_app";
+import { useSWRConfig } from "swr";
+import useProductStore from "../../hooks/store";
 
 const ProductItem: React.FC<Product> = (product) => {
   const [editable, setEditable] = useState(false);
+
   const productInfo = omit(product, [
     "id",
     "title",
@@ -20,19 +22,15 @@ const ProductItem: React.FC<Product> = (product) => {
   const [productInfoFormInput, setProductInfoFormInput] = useState<
     Partial<ProductInfo>
   >({});
-  const { fetch } = useAxios(
-    `products/${product.id}`,
-    "put",
-    "product-edit",
-    productInfo
-  );
+  const activeCategory = useProductStore((state) => state.productCategory);
+
   return (
     <div key={product.id} className={productStyles.card}>
       <div className={productStyles.title}>
         <h4>{product.title}</h4>
         <p>{product.description}</p>
       </div>
-      <img src={product.thumbnail} alt={product.title}/>
+      <img src={product.thumbnail} alt={product.title} />
       <ProductInfoList
         productInfo={productInfo}
         productInfoFormInput={productInfoFormInput}
@@ -42,8 +40,9 @@ const ProductItem: React.FC<Product> = (product) => {
       <button
         type="submit"
         onClick={() => {
-          if (editable && Object.keys(productInfoFormInput).length > 0) {
-            fetch(productInfoFormInput);
+          const empty = Object.keys(productInfoFormInput).length === 0;
+          if (editable && !empty) {
+            axiosInstance.put(`products/${product.id}`, productInfoFormInput);
           }
           setEditable(!editable);
         }}

@@ -1,27 +1,12 @@
 import React, { useState } from "react";
 import productStyles from "../../styles/Product.module.css";
-import { ProductInfo } from "./types";
-
-interface IProductInfoItem {
-  inputKey: keyof ProductInfo;
-  label: string;
-  value: string;
-  editable: boolean;
-  suffix?: string;
-  productInfoFormInput: Partial<ProductInfo>;
-  setProductInfoFormInput: React.Dispatch<
-    React.SetStateAction<Partial<ProductInfo>>
-  >;
-}
+import { IProductInfoItem } from "./types";
 
 const ProductInfoItem: React.FC<IProductInfoItem> = ({
-  inputKey,
   label,
   value,
-  editable,
   suffix,
-  productInfoFormInput,
-  setProductInfoFormInput,
+  formProps: form,
 }) => {
   const [inputValue, setInputValue] = useState(value);
   return (
@@ -30,13 +15,13 @@ const ProductInfoItem: React.FC<IProductInfoItem> = ({
       <div className={productStyles["input-field"]}>
         <input
           type="text"
-          disabled={!editable}
+          disabled={!form.editable}
           value={inputValue}
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
             setInputValue(e.currentTarget.value);
-            setProductInfoFormInput(
-              Object.assign(productInfoFormInput, {
-                [inputKey]: e.currentTarget.value,
+            form.setProductInfoFormInput(
+              Object.assign(form.productInfoFormInput, {
+                [form.inputKey]: e.currentTarget.value,
               })
             );
           }}

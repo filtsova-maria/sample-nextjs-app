@@ -3,11 +3,11 @@ import { ECategory } from "../components/Categories/types";
 
 interface IProductStore {
   productCategory: ECategory;
-  changeProductCategory: (newCategory: ECategory) => void;
+  setActiveCategory: (newCategory: ECategory) => void;
 }
 
 const useProductStore = create<IProductStore>((set) => ({
-  productCategory: ECategory.smartphones,
-  changeProductCategory: (newCategory) => set({ productCategory: newCategory }),
+  productCategory: ECategory.smartphones.toLocaleLowerCase() as ECategory,
+  setActiveCategory: (newCategory) => set({ productCategory: newCategory }),
 }));
 export default useProductStore;

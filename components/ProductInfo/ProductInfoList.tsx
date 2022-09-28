@@ -1,16 +1,7 @@
 import React from "react";
 import ProductInfoItem from "./ProductInfoItem";
-import { ProductInfo } from "./types";
+import { IProductInfoList, ProductInfo } from "./types";
 import { EProductInfoLabels } from "./types";
-
-type IProductInfoList = {
-  productInfo: ProductInfo;
-  editable: boolean;
-  productInfoFormInput: Partial<ProductInfo>;
-  setProductInfoFormInput: React.Dispatch<
-    React.SetStateAction<Partial<ProductInfo>>
-  >;
-};
 
 const ProductInfoList: React.FC<IProductInfoList> = ({
   productInfo,
@@ -32,13 +23,15 @@ const ProductInfoList: React.FC<IProductInfoList> = ({
         return (
           <ProductInfoItem
             key={key}
-            inputKey={key as keyof ProductInfo}
             label={EProductInfoLabels[key as keyof typeof EProductInfoLabels]}
             value={productInfo[key as keyof ProductInfo].toString()}
-            editable={editable}
             suffix={suffix}
-            productInfoFormInput={productInfoFormInput}
-            setProductInfoFormInput={setProductInfoFormInput}
+            formProps={{
+              inputKey: key as keyof ProductInfo,
+              editable,
+              productInfoFormInput,
+              setProductInfoFormInput,
+            }}
           />
         );
       })}
