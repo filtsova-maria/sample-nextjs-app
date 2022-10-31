@@ -5,4 +5,4 @@ A simple app using Next.js and Typescript to fetch products from the [dummyjson]
 - next
 - react
 - axios
-- axios-cache-interceptor
+- axios-cache-interceptor (actually I should replace it with react-query)
